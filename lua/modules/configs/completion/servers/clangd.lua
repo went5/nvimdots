@@ -41,7 +41,7 @@ return function(options)
 		single_file_support = true,
 		cmd = {
 			"clangd",
-			"-j=12",
+			"-j=32",
 			"--enable-config",
 			"--background-index",
 			"--pch-storage=memory",
@@ -54,6 +54,7 @@ return function(options)
 			"--header-insertion=iwyu",
 			"--limit-references=3000",
 			"--limit-results=350",
+            "--suggest-missing-includes",
 		},
 		commands = {
 			ClangdSwitchSourceHeader = {

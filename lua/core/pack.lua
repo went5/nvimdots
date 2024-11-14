@@ -155,7 +155,16 @@ function Lazy:load_lazy()
 	end
 
 	vim.opt.rtp:prepend(lazy_path)
-	require("lazy").setup(self.modules, lazy_settings)
+
+    local vscode_plugins = {
+        {"phaazon/hop.nvim"},
+       -- {"folke/which-key.nvim",config = require("tool.which-key")}
+    }
+    if vim.g.vscode == 1 then
+	    require("lazy").setup(vscode_plugins, {})
+    else
+    	require("lazy").setup(self.modules, lazy_settings)
+    end
 end
 
 Lazy:load_lazy()

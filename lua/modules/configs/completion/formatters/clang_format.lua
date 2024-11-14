@@ -1,1 +1,2 @@
-return { "-style={BasedOnStyle: LLVM, IndentWidth: 4}" }
+-- NOTE: BasedOnStyleはプロジェクトによって変える
+return { "-style=file" }

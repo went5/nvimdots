@@ -311,7 +311,6 @@ return function()
 			lualine_x = {
 				{
 					"encoding",
-					show_bomb = true,
 					fmt = string.upper,
 					padding = { left = 1 },
 					cond = conditionals.has_enough_room,
@@ -335,14 +334,22 @@ return function()
 			lualine_z = { components.file_location },
 		},
 		inactive_sections = {
-			lualine_a = {},
+			lualine_a = { "filetype" },
 			lualine_b = {},
-			lualine_c = { "filename" },
-			lualine_x = { "location" },
+			lualine_c = {},
+			lualine_x = {},
 			lualine_y = {},
 			lualine_z = {},
 		},
 		tabline = {},
-		extensions = {},
+		extensions = {
+			"quickfix",
+			"nvim-tree",
+			"nvim-dap-ui",
+			"toggleterm",
+			"fugitive",
+			outline,
+			diffview,
+		},
 	})
 end
