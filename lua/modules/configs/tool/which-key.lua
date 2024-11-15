@@ -66,10 +66,15 @@ return function()
 			{ "<leader>b", group = icons.ui.Buffer .. " Buffer" },
 			{ "<leader>S", group = icons.ui.Search .. " Search" },
 			{ "<leader>W", group = icons.ui.Window .. " Window" },
-			{ "<leader>p", group = icons.ui.Package .. " Package" },
+			--{ "<leader>p", group = icons.ui.Package .. " Package" },
 			{ "<leader>l", group = icons.misc.LspAvailable .. " Lsp" },
 			{ "<leader>f", group = icons.ui.Telescope .. " Fuzzy Find" },
 			{ "<leader>n", group = icons.ui.FolderOpen .. " Nvim Tree" },
+			-- custom
+			{ "<leader>p", group = " Plugin" },
+			{ "<leader>pt", group = icons.ui.Telescope.. "Telescope " },
+
+
 		},
 	})
 end

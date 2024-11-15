@@ -13,7 +13,6 @@ end
 
 -- キーマッピングのテーブル
 local keys = {
-    ['k'] = { "<cmd>Telescope keymaps<cr>", "keymap list" },
     [' '] = { ":", "Command" },
     ['.'] = { '<cmd>cd %:h<cr>', 'Move Current Directory' },
     ['['] = {
@@ -31,18 +30,6 @@ local keys = {
         ['l'] = { '<cmd>Telescope buffers<cr>', 'List Buffer' },
         ['d'] = { '<cmd>windo bd<cr>', 'Delete Other Buffer' },
     },
-    ['B'] = {
-        name = '+Build',
-        c = { '<cmd>!g++ -g3 %:p<cr>', 'build a.exe' },
-    },
-    ['C'] = {
-        name = '+Copy',
-        ['f'] = { ':let @* = expand("%:t")<cr>', 'Filename' },
-        ['p'] = { ':let @* = expand("%:p")<cr>', 'FullPath' },
-        ['d'] = { ':let @* = expand("%:p:h")<cr>', 'Directory' },
-        ['r'] = { ':let @* = expand("%:r")<cr>', 'FileName without extension' },
-        ['e'] = { ':let @* = expand("%:e")<cr>', 'extension' },
-    },
     -- m,c,sは予約済み
     ['d'] = {
         name = '+Debug',
@@ -54,28 +41,7 @@ local keys = {
         ['r'] = { '<cmd>lua require("dap").repl.toggle()<CR>', 'Repl Toggle' },
         ['l'] = { '<cmd>lua require("dap").run_last()<CR>', 'Run Last' },
     },
-    ["E"] = {
-        name = "+Extension",
-        ["a"] = {
-            name = "+Aerial",
-            ['o'] = { '<cmd>AerialOpen<cr>', 'Open' },
-            ['O'] = { '<cmd>AerialOpen!<cr>', 'Open not Switch' },
-            ['t'] = { '<cmd>AerialToggle<cr>', 'Toggle' },
-        },
-        -- ['l'] = {
-        -- 	name = "+LineNote",
-        -- 	['a'] = { '<cmd>LineNotesAdd<cr>', 'LineNotes Add' },
-        -- 	['e'] = { '<cmd>LineNotesEdit<cr>', 'LineNotes Edit' },
-        -- 	['p'] = { '<cmd>LineNotesPreview<cr>', 'LineNotes Preview' },
-        -- 	['d'] = { '<cmd>LineNotesDelete<cr>', 'LineNotes Delete' },
-        -- 	['n'] = { '<cmd>Telescope line_notes<cr>', 'LineNotes List' },
-        -- 	['c'] = { '<cmd>Telescope line_notes_project<cr>', 'LineNotes Project' },
-        -- },
-        ['T'] = {
-            name = '+TreeSitter',
-            ['t'] = { '<cmd>TSToggle highlight<cr>' }
-        },
-    },
+
     ["f"] = {
         name = "+File",
         d = { '<cmd>DiffviewOpen', "DiffViewOpen" },
@@ -94,37 +60,6 @@ local keys = {
         ['l'] = { '<cmd>HopLine<cr>', 'HopLine' },
         ['L'] = { '<cmd>HopLineStart<cr>', 'HopLineStart' },
     },
-    ["F"] = {
-        name = "+Find File",
-        ['0'] = { "<cmd>lua require('telescope.builtin').find_files({hidden=true})<cr>", "Find File CMD" },
-        ['1'] = { "<cmd>Telescope find_files hidden=true search_dirs=../<cr>", "Find File Up 1" },
-        ['2'] = { "<cmd>Telescope find_files hidden=true search_dirs=../../<cr>", "Find File Up 2" },
-        b = { '<cmd>lua require("telescope").extensions.file_browser.file_browser({hidden=true})<cr>', "File Browser" },
-        f = { '<cmd>Telescope frecency<cr>', 'Frecency' }, --よく使うファイルをみつける
-        F = { '<cmd>lua require("telescope").extensions.frecency.frecency({ workspace = "CWD" })<cr>', 'Frecency CMD' }, --よく使うファイルをみつける
-        o = { '<cmd>lua require("telescope.builtin").oldfiles()<cr>', 'OldFiles' }, -- ファイル内の文字列から探す
-        s = { '<cmd>Telescope git_status', 'git status' }, -- ファイル内の文字列から探す
-        ['p'] = { '<cmd>Telescope projects<cr>', 'Find Project' },
-        n = { '<cmd>vim.api.nvim_command("enew")<cr>', 'New File' },
-        g = {
-            name = 'grep',
-            ['1'] = { '<cmd>Telescope live_grep hidden=true search_dirs=../<cr>', 'Parent Dir grep' }, -- ファイル内の文字列から探す
-            ['2'] = { '<cmd>Telescope live_grep hidden=true search_dirs=../../<cr>', 'Grandparent Dir grep' }, -- ファイル内の文字列から探す
-            s = { '<cmd>Telescope grep_string<cr>', 'fzf grep' }, -- ファイル内の文字列から探す
-            G = { '<cmd>Telescope live_grep_args hidden=true<cr>', 'grep args' }, -- 初期引数なしのgrep
-            g = { '<cmd>Telescope live_grep hidden=true<cr>', 'live grep' }, -- ファイル内の文字列から探す
-        },
-    },
-    ["G"] = {
-        name = "+Git",
-        c = { '<cmd>Telescope git_commits<cr>', 'Commits' }, -- ファイル内の文字列から探す
-        s = { '<cmd>Telescope git_status<cr>', 'Status' }, -- ファイル内の文字列から探す
-        ['d'] = { '<cmd>Gitsigns diffthis<cr>', 'diffthis' },
-        ['n'] = { '<cmd>Gitsigns next_hunk<cr>', 'next hunk' },
-        ['p'] = { '<cmd>Gitsignsprev_hunk<cr>', 'prev hunk' },
-        ['l'] = { "<cmd>execute 'Git log -p -L ' . line('.') . ',' . line('.') . ':' . expand('%:p')<cr>", 'current line log' },
-    },
-    ['H'] = { '<cmd>noh<cr>', 'No highlight' },
     -- tは予約済み
     ['l'] = {
         name = '+LSP',
@@ -166,14 +101,6 @@ local keys = {
         },
         t = { '<cmd>call ToggleProgFile()<cr>', 'ToggleFile' },
     },
-    ['M'] = {
-        name = "+Bookmarks",
-        ['b'] = { '<cmd>BookmarkToggle<cr>', 'Toggle' },
-        ['a'] = { '<cmd>BookmarkAnnotate<cr>', 'Annotate' },
-        ['c'] = { '<cmd>BookmarkClear<cr>', 'Bookmark Clear' },
-        ['C'] = { '<cmd>BookmarkClearAll<cr>', 'Bookmark Clear All' },
-        ['s'] = { '<cmd>Telescope vim_bookmarks all<cr>', 'Show All Bookmark' },
-    },
     ['o'] = {
         name = "+Open",
         ['s'] = { '<cmd>call OpenVS2022WithCurrentFileAndLine()<cr>', 'Visual Studio' },
@@ -181,6 +108,15 @@ local keys = {
         -- ['c'] = { "<cmd>!code --goto %:p: line('.')<cr>", 'VSCode' },
         ['e'] = { '<cmd>!explorer %:p:h<cr><cr>', 'Explorer' }
     },
+
+    ['p'] = {
+        name = "Plugin",
+        ['t'] = {
+            name = "Telescope",
+            ['k'] = { "<cmd>Telescope keymaps<cr>", "Telescope keymaps" },
+        }
+    },
+
     ['q'] = {
         name = '+Quit',
         ['r'] = { '<cmd>update<cr><cmd>luafile $MYVIMRC<cr><cr>', 'Reload Lua' },
@@ -192,19 +128,6 @@ local keys = {
     },
     ["t"] = {
         name = "+Toggle",
-    },
-    ["T"] = {
-        name = "+Telescope",
-        ["a"] = { "<cmd>Telescope autocommands<cr>", "autocommands" },
-        ["h"] = { "<cmd>Telescope command_history<cr>", "command_history" },
-        ["H"] = { "<cmd>Telescope search_history<cr>", "search_history" },
-        ["j"] = { "<cmd>Telescope jumplist<cr>", "jumplist" },
-        ["m"] = { "<cmd>Telescope marks<cr>", "marks" },
-        ["n"] = { "<cmd>Noice telescope", "noice" },
-        ["q"] = { "<cmd>Telescope quickfix<cr>", "quickfix" },
-        ["r"] = { "<cmd>Telescope registers<cr>", "registers" },
-        ["s"] = { "<cmd>Telescope spell_suggest<cr>", "spell_suggest" },
-        ["t"] = { "<cmd>Telescope resume<cr>", "resume" },
     },
     ["v"] = {
         name = "+Visual",
@@ -223,27 +146,103 @@ local keys = {
         ['t'] = { ':lua require("toggleterm").toggle(1,12,vim.fn.getcwd())<cr>', 'ToggleTerm' },
         ['p'] = { '<cmd>lua require("dapui").toggle()<CR>', 'ToggleDapUI' },
     },
-    ['Y'] = {
-        "<cmd>Telescope yank_history<cr>", "YankHistory"
-    },
     ['z'] = {
         name = "+Fold",
         ["z"] = { "<cmd>set foldmethod=indent<cr>", "create indent fold" }
     },
+
+    ['B'] = {
+        name = '+Build',
+        c = { '<cmd>!g++ -g3 %:p<cr>', 'build a.exe' },
+    },
+    ['C'] = {
+        name = '+Copy',
+        ['f'] = { ':let @* = expand("%:t")<cr>', 'Filename' },
+        ['p'] = { ':let @* = expand("%:p")<cr>', 'FullPath' },
+        ['d'] = { ':let @* = expand("%:p:h")<cr>', 'Directory' },
+        ['r'] = { ':let @* = expand("%:r")<cr>', 'FileName without extension' },
+        ['e'] = { ':let @* = expand("%:e")<cr>', 'extension' },
+    },
+    ["E"] = {
+        name = "+Extension",
+        ["a"] = {
+            name = "+Aerial",
+            ['o'] = { '<cmd>AerialOpen<cr>', 'Open' },
+            ['O'] = { '<cmd>AerialOpen!<cr>', 'Open not Switch' },
+            ['t'] = { '<cmd>AerialToggle<cr>', 'Toggle' },
+        },
+        -- ['l'] = {
+        -- 	name = "+LineNote",
+        -- 	['a'] = { '<cmd>LineNotesAdd<cr>', 'LineNotes Add' },
+        -- 	['e'] = { '<cmd>LineNotesEdit<cr>', 'LineNotes Edit' },
+        -- 	['p'] = { '<cmd>LineNotesPreview<cr>', 'LineNotes Preview' },
+        -- 	['d'] = { '<cmd>LineNotesDelete<cr>', 'LineNotes Delete' },
+        -- 	['n'] = { '<cmd>Telescope line_notes<cr>', 'LineNotes List' },
+        -- 	['c'] = { '<cmd>Telescope line_notes_project<cr>', 'LineNotes Project' },
+        -- },
+        ['T'] = {
+            name = '+TreeSitter',
+            ['t'] = { '<cmd>TSToggle highlight<cr>' }
+        },
+    },
+    ["F"] = {
+        name = "+Find File",
+        ['0'] = { "<cmd>lua require('telescope.builtin').find_files({hidden=true})<cr>", "Find File CMD" },
+        ['1'] = { "<cmd>Telescope find_files hidden=true search_dirs=../<cr>", "Find File Up 1" },
+        ['2'] = { "<cmd>Telescope find_files hidden=true search_dirs=../../<cr>", "Find File Up 2" },
+        b = { '<cmd>lua require("telescope").extensions.file_browser.file_browser({hidden=true})<cr>', "File Browser" },
+        f = { '<cmd>Telescope frecency<cr>', 'Frecency' }, --よく使うファイルをみつける
+        F = { '<cmd>lua require("telescope").extensions.frecency.frecency({ workspace = "CWD" })<cr>', 'Frecency CMD' }, --よく使うファイルをみつける
+        o = { '<cmd>lua require("telescope.builtin").oldfiles()<cr>', 'OldFiles' }, -- ファイル内の文字列から探す
+        s = { '<cmd>Telescope git_status', 'git status' }, -- ファイル内の文字列から探す
+        ['p'] = { '<cmd>Telescope projects<cr>', 'Find Project' },
+        n = { '<cmd>vim.api.nvim_command("enew")<cr>', 'New File' },
+        g = {
+            name = 'grep',
+            ['1'] = { '<cmd>Telescope live_grep hidden=true search_dirs=../<cr>', 'Parent Dir grep' }, -- ファイル内の文字列から探す
+            ['2'] = { '<cmd>Telescope live_grep hidden=true search_dirs=../../<cr>', 'Grandparent Dir grep' }, -- ファイル内の文字列から探す
+            s = { '<cmd>Telescope grep_string<cr>', 'fzf grep' }, -- ファイル内の文字列から探す
+            G = { '<cmd>Telescope live_grep_args hidden=true<cr>', 'grep args' }, -- 初期引数なしのgrep
+            g = { '<cmd>Telescope live_grep hidden=true<cr>', 'live grep' }, -- ファイル内の文字列から探す
+        },
+    },
+    ["G"] = {
+        name = "+Git",
+        c = { '<cmd>Telescope git_commits<cr>', 'Commits' }, -- ファイル内の文字列から探す
+        s = { '<cmd>Telescope git_status<cr>', 'Status' }, -- ファイル内の文字列から探す
+        ['d'] = { '<cmd>Gitsigns diffthis<cr>', 'diffthis' },
+        ['n'] = { '<cmd>Gitsigns next_hunk<cr>', 'next hunk' },
+        ['p'] = { '<cmd>Gitsignsprev_hunk<cr>', 'prev hunk' },
+        ['l'] = { "<cmd>execute 'Git log -p -L ' . line('.') . ',' . line('.') . ':' . expand('%:p')<cr>", 'current line log' },
+    },
+    ['H'] = { '<cmd>noh<cr>', 'No highlight' },
+    ['M'] = {
+        name = "+Bookmarks",
+        ['b'] = { '<cmd>BookmarkToggle<cr>', 'Toggle' },
+        ['a'] = { '<cmd>BookmarkAnnotate<cr>', 'Annotate' },
+        ['c'] = { '<cmd>BookmarkClear<cr>', 'Bookmark Clear' },
+        ['C'] = { '<cmd>BookmarkClearAll<cr>', 'Bookmark Clear All' },
+        ['s'] = { '<cmd>Telescope vim_bookmarks all<cr>', 'Show All Bookmark' },
+    },
+    ["T"] = {
+        name = "+Telescope",
+        ["a"] = { "<cmd>Telescope autocommands<cr>", "autocommands" },
+        ["h"] = { "<cmd>Telescope command_history<cr>", "command_history" },
+        ["H"] = { "<cmd>Telescope search_history<cr>", "search_history" },
+        ["j"] = { "<cmd>Telescope jumplist<cr>", "jumplist" },
+        ["m"] = { "<cmd>Telescope marks<cr>", "marks" },
+        ["n"] = { "<cmd>Noice telescope", "noice" },
+        ["q"] = { "<cmd>Telescope quickfix<cr>", "quickfix" },
+        ["r"] = { "<cmd>Telescope registers<cr>", "registers" },
+        ["s"] = { "<cmd>Telescope spell_suggest<cr>", "spell_suggest" },
+        ["t"] = { "<cmd>Telescope resume<cr>", "resume" },
+    },
+    ['Y'] = {
+        "<cmd>Telescope yank_history<cr>", "YankHistory"
+    },
 }
 
 set_keymaps(keys, " ")
-
-
-return vim.tbl_extend(
-	"force",
-	require("user.keymap.core"),
-	require("user.keymap.completion").plug_map,
-	require("user.keymap.editor"),
-	require("user.keymap.lang"),
-	require("user.keymap.tool"),
-	require("user.keymap.ui")
-)
 
 
 return vim.tbl_extend(

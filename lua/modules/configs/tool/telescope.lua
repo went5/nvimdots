@@ -99,5 +99,4 @@ return function()
 	require("telescope").load_extension("persisted")
 	require("telescope").load_extension("aerial")
 	require("telescope").load_extension("advanced_git_search")
-	require("telescope").load_extension("dir")
 end

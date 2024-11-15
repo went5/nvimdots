@@ -33,4 +33,6 @@ settings["dashboard_image"] = {
 
 }
 
+settings["use_copilot"] = false
+
 return settings
